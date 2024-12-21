@@ -13,36 +13,29 @@ const Signup = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
   
-    try {
       console.log("Sending request to create user...");
       const response = await fetch("http://127.0.0.1:5000/api/createuser", {
         method: "POST",
         headers: {
           'Content-Type': 'application/json',
         }, 
-       
+        
         body: JSON.stringify({
           name: credentials.name,
           email: credentials.email,
           password: credentials.password,
           location: credentials.location,
         }),
-      });
 
-      console.log("Response Status:", response.status); // Log response status
-      console.log("Response Headers:", response.headers); // Log response headers
-      
-      // Check if response is successful
-      if (response.ok) {
-        const data = await response.json();
-       console.log(data.message || 'User created successfully!');
-    } else {
-        const errorData = await response.json();
-        console.log(errorData.error || 'Failed to create user.');
-    }
-} catch (error) {
-    console.log('Error connecting to the server.');
+        
+      });
+          const json=await response.json()
+          console.log(json)
+
+          if(!json.success){
+            alert("Enter valid creditials")
 }
+    
   }
 
   const onChange = (event) => {

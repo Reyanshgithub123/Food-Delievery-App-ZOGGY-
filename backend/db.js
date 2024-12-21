@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const mongoURI = "mongodb://localhost:27017/yoo";
 
@@ -11,19 +11,20 @@ const mongoDB = async () => {
         // Access the database
         const db = mongoose.connection.db;
 
-        // Access the 'Food' collection
-        const fetched_data = db.collection("food_item");
+        // Fetch data from 'food_item' collection
+        const foodItems = await db.collection("food_item").find({}).toArray();
 
-        // Fetch data using async/await
-        const data = await fetched_data.find({}).toArray();
+        // Fetch data from 'category' collection
+        const foodCategories = await db.collection("category").find({}).toArray();
 
-        // Log the data
-        console.log("hello");
+        // Set global variables
+        global.food_items = foodItems;
+        global.category = foodCategories;
 
+        console.log("Data fetched and stored globally");
     } catch (error) {
         console.error("Error connecting to MongoDB or fetching data:", error);
     }
 };
 
 module.exports = mongoDB;
-

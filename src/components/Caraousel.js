@@ -1,27 +1,25 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 const Caraousel = () => {
+
+  const [search,setSearch]=useState('')
   return (
     <div>
       <div id="carouselExample" className="carousel slide" style={{objectFit:"contain !important"}}>
   <div className="carousel-inner" id='carousel'>
     <div className='carousel-caption' style={{zIndex:"10"}}>
-    <form className="form-inline d-flex justify-content-center align-items-center">
+    <div className="form-inline d-flex justify-content-center align-items-center">
               <input
                 className="form-control mr-2"
                 type="search"
                 placeholder="Search"
-                aria-label="Search"
+                aria-label="Search" 
                 style={{ maxWidth: "100%" }}
-              />
-              <button
-                className="btn btn-outline-success text-white"
-                type="submit"
-                style={{ backgroundColor: "green" }}
-              >
-                Search
-              </button>
-            </form>
+             value={search} onChange={(e)=>{
+              setSearch(e.target.value)
+             }} />
+             
+            </div>
     </div>
     <div className="carousel-item active">
       <img src="https://www.shutterstock.com/image-photo/burger-tomateoes-lettuce-pickles-on-600nw-2309539129.jpg" className="d-block w-100 h-50" alt="..."/>
