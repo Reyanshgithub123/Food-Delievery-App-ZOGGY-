@@ -4,7 +4,8 @@ const router = express.Router();
 
 router.post('/contact',(req,res)=>{
    try {
-    console.log("clicked on contacts")
+    res.send("clicked on contacts")
+    console.log("okbro")
    } catch (error) {
     console.error(error)
    }

@@ -17,6 +17,7 @@ const createuser = async (req, res) => {
         errors: errors.array(),
       });
     }
+    
 
     // Destructure data from request body
     const { name, email, password, location } = req.body;
